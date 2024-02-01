@@ -1,37 +1,32 @@
-from ZCodeVisitor import ZCodeVisitor
-from ZCodeParser import ZCodeParser
-from AST import *
+# Generated from main/zcode/parser/ZCode.g4 by ANTLR 4.9.2
+from antlr4 import *
+if __name__ is not None and "." in __name__:
+    from .ZCodeParser import ZCodeParser
+else:
+    from ZCodeParser import ZCodeParser
 
-class ASTGeneration(ZCodeVisitor):
+# This class defines a complete generic visitor for a parse tree produced by ZCodeParser.
+
+class ZCodeVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by ZCodeParser#program.
     def visitProgram(self, ctx:ZCodeParser.ProgramContext):
-        if ctx.NEWLINE():
-            return self.visit(ctx.list_declared) + self.visit(ctx.EOF)
-        return self.visit(ctx.NEWLINE) + self.visit(ctx.list_declared) + self.visit(ctx.EOF)
+        return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by ZCodeParser#list_declared.
     def visitList_declared(self, ctx:ZCodeParser.List_declaredContext):
-        if ctx.list_declared():
-            return [self.visit(ctx.declared())] + self.visit(ctx.list_declared())
-        return [self.visit(ctx.declared())]
+        return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by ZCodeParser#declared.
     def visitDeclared(self, ctx:ZCodeParser.DeclaredContext):
-        if ctx.function():
-            return self.visit(ctx.variables()) + self.visit(ctx.ignore())
-        return self.visit(ctx.function())
+        return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by ZCodeParser#variables.
     def visitVariables(self, ctx:ZCodeParser.VariablesContext):
-        if ctx.keyword_var() is None and ctx.implicit_dynamic() is None:
-            return self.visit(ctx.implicit_var())
-        if ctx.implicit_var() is None and ctx.implicit_dynamic() is None:
-            return self.visit(ctx.keyword_var())
-        return self.visit(ctx.implicit_dynamic())
+        return self.visitChildren(ctx)
 
 
     # Visit a parse tree produced by ZCodeParser#implicit_var.
@@ -223,4 +218,6 @@ class ASTGeneration(ZCodeVisitor):
     def visitIgnore(self, ctx:ZCodeParser.IgnoreContext):
         return self.visitChildren(ctx)
 
-    
+
+
+del ZCodeParser

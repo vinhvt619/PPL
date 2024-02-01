@@ -15,12 +15,12 @@ declared: function | variables ignore;
 
 variables: implicit_var | keyword_var | implicit_dynamic; 
 implicit_var: VAR IDENTIFIER ARROW ( expression | array_literal);
-keyword_var: (BOOL | STRING | NUMBER) IDENTIFIER ('['list_number']')?  (ARROW expression)?;
+keyword_var: TYPE IDENTIFIER ('['list_number']')?  (ARROW expression)?;
 list_number: NUMBER_LIT ',' list_number | NUMBER_LIT;
 number_string: (NUMBER_LIT | STRING_LIT) ',' list_number | (NUMBER_LIT | STRING_LIT);
 implicit_dynamic: DYNAMIC IDENTIFIER (ARROW expression)?;
 
-
+TYPE: (BOOL | STRING | NUMBER);
 
 
 function: FUNC IDENTIFIER '(' prameters_list? ')'  (ignore? return_statement | ignore? block_statement | ignore);
