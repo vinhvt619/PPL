@@ -354,7 +354,7 @@ class LexerSuite(unittest.TestCase):
         
     def test65(self):
         input = "\f"
-        expected = "Error Token \f"
+        expected = "<EOF>"
         self.assertTrue(TestLexer.test(input, expected, 165))
         
     def test66(self):
@@ -364,7 +364,7 @@ class LexerSuite(unittest.TestCase):
         
     def test67(self):
         input = "\b"
-        expected = "Error Token \b"
+        expected = "<EOF>"
         self.assertTrue(TestLexer.test(input, expected, 167))
         
     def test68(self):
