@@ -1,0 +1,8 @@
+
+            func main(number a)
+            ##ez
+                begin
+                    break
+                end
+                ##abc
+        

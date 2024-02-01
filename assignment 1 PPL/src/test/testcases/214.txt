@@ -1,0 +1,6 @@
+
+        class Shape  
+            var length, width: int; 
+            func getArea(): int  
+                return self.length * self.width; 
+             

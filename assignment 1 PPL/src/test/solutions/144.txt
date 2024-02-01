@@ -1,0 +1,1 @@
+scammer,dinh,nhat,moi,thoi,dai,<EOF>

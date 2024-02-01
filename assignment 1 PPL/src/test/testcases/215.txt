@@ -1,0 +1,5 @@
+
+            func main(number num1, number num2)
+                ##var numb <- 1
+            func main(number f1 <- c)
+        

@@ -1,0 +1,4 @@
+
+        func main()
+            number s <- r * r * 3.14
+        

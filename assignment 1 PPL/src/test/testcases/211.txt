@@ -1,0 +1,4 @@
+func constructor(length, width: int) 
+            selflength = length
+            selfwidth = width
+        
