@@ -1,0 +1,1 @@
+Program([VarDecl(Id(x),[(NumberLiteral(value='1'), (StringLiteral(value='a'), (BooleanLiteral(value=True), BooleanLiteral(value=False))))])])

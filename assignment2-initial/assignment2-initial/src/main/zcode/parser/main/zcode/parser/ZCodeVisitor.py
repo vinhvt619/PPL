@@ -12,7 +12,3 @@ class ZCodeVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by ZCodeParser#program.
     def visitProgram(self, ctx:ZCodeParser.ProgramContext):
         return self.visitChildren(ctx)
-
-
-
-del ZCodeParser

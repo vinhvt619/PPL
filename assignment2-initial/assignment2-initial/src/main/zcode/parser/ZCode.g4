@@ -8,42 +8,36 @@ options {
 	language=Python3;
 }
 program: NEWLINE* list_declared EOF;
-list_declared:  declared list_declared |  declared;
+list_declared:  declared list_declared | declared;
 declared: function | variables ignore;
 
 
 
 variables: implicit_var | keyword_var | implicit_dynamic; 
-implicit_var: VAR IDENTIFIER ARROW ( expression | array_literal);
-keyword_var: TYPE IDENTIFIER ('['list_number']')?  (ARROW expression)?;
+implicit_var: VAR IDENTIFIER ARROW expression;
+keyword_var: type1 IDENTIFIER ('['list_number']')?  (ARROW expression)?;
 list_number: NUMBER_LIT ',' list_number | NUMBER_LIT;
-number_string: (NUMBER_LIT | STRING_LIT) ',' list_number | (NUMBER_LIT | STRING_LIT);
 implicit_dynamic: DYNAMIC IDENTIFIER (ARROW expression)?;
 
-TYPE: (BOOL | STRING | NUMBER);
+type1: (BOOL | STRING | NUMBER);
 
 
 function: FUNC IDENTIFIER '(' prameters_list? ')'  (ignore? return_statement | ignore? block_statement | ignore);
 prameters_list: pram ',' prameters_list | pram;
-pram: ((BOOL | STRING | NUMBER) IDENTIFIER ('['list_number']')?);
+pram: type1 IDENTIFIER ('['list_number']')?;
 
 
 
-
-exp_prime: expression exp_prime | expression;
-expression: expression0;
-expression0: expression1 CONCAT expression1 | expression1;
+expression: expression1 CONCAT expression1 | expression1;
 expression1: expression2 (LESS | GREATER | LE | GE | EQUAL | EE | DIFF) expression2 | expression2;
 expression2: expression2 (AND | OR) expression3 | expression3;
 expression3: expression3 (ADD | MINUS) expression4 | expression4;
 expression4: expression4 (DIV | MUL | MOD) expression5 | expression5;
 expression5: NOT expression5 | expression6;
 expression6: MINUS expression6 | expression7;
-expression7: (IDENTIFIER | IDENTIFIER ('(' (list_array)? ')')) '[' list_expression ']'| expression8;
-expression8: IDENTIFIER ('(' (list_array)? ')') | '(' list_array? ')' | literal;
+expression7: (IDENTIFIER | IDENTIFIER ('(' (list_expression)? ')')) '[' list_expression ']'| expression8;
+expression8: IDENTIFIER ('(' (list_expression)? ')') | '(' list_expression? ')' | literal;
 
-
-list_array: (array_literal | list_expression) CM list_array | (array_literal | list_expression);
 
 list_expression: expression CM list_expression | expression;
 
@@ -59,7 +53,7 @@ statement: declaration_statement | assignment_statement
 
 
 declaration_statement: variables ignore;
-assignment_statement: IDENTIFIER array_literal? ('=' NUMBER_LIT)? ARROW expression ignore;
+assignment_statement: IDENTIFIER ('['list_expression']')? ARROW expression ignore;
 
 
 if_statement: 'if' expression ignore? statement elif_loop? else_statement? ; 
@@ -75,9 +69,9 @@ break_statement: BREAK ignore;
 continue_statement: CONTINUE ignore;
 return_statement: RETURN (expression)? ignore;
 
-call_statement: IDENTIFIER '(' (list_array)? ')' ignore;
+call_statement: IDENTIFIER '(' (list_expression)? ')' ignore;
 
-block_statement: BEGIN ignore? list_statement?  END ignore;
+block_statement: BEGIN ignore list_statement?  END ignore;
 list_statement: statement list_statement | statement;
 
 
