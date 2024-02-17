@@ -26,7 +26,6 @@ class ASTGeneration(ZCodeVisitor):
 
 
     # Visit a parse tree produced by ZCodeParser#variables.
-    # implicit_var: VAR IDENTIFIER ARROW expression;
     def visitVariables(self, ctx:ZCodeParser.VariablesContext):
         if ctx.keyword_var() is None and ctx.implicit_dynamic() is None:
             return self.visit(ctx.implicit_var())
@@ -37,7 +36,7 @@ class ASTGeneration(ZCodeVisitor):
 
     # Visit a parse tree produced by ZCodeParser#implicit_var.
     def visitImplicit_var(self, ctx:ZCodeParser.Implicit_varContext):
-        return VarDecl(Id(ctx.IDENTIFIER().getText()), None, None, self.visit(ctx.expression()))
+        return VarDecl(Id(ctx.IDENTIFIER().getText()), None, "var", self.visit(ctx.expression()))
 
     # Visit a parse tree produced by ZCodeParser#keyword_var.
     #keyword_var: type1 IDENTIFIER ('['list_number']')?  (ARROW expression)?;
@@ -62,15 +61,15 @@ class ASTGeneration(ZCodeVisitor):
     #list_number: NUMBER_LIT ',' list_number | NUMBER_LIT;
     def visitList_number(self, ctx:ZCodeParser.List_numberContext):
         if ctx.getChildCount() == 1:
-            return [ctx.NUMBER_LIT().getText()]
-        return [ctx.NUMBER_LIT().getText()] + self.visit(ctx.list_number())
+            return [float(ctx.NUMBER_LIT().getText())]
+        return [float(ctx.NUMBER_LIT().getText())] + self.visit(ctx.list_number())
 
 
     # Visit a parse tree produced by ZCodeParser#implicit_dynamic.
     def visitImplicit_dynamic(self, ctx:ZCodeParser.Implicit_dynamicContext):
         if ctx.expression() is None:
-            return VarDecl(Id(ctx.IDENTIFIER().getText()), None, None, None)
-        return VarDecl(Id(ctx.IDENTIFIER().getText()), None, None, self.visit(ctx.expression()))
+            return VarDecl(Id(ctx.IDENTIFIER().getText()), None, "dynamic", None)
+        return VarDecl(Id(ctx.IDENTIFIER().getText()), None, "dynamic", self.visit(ctx.expression()))
 
 
     # Visit a parse tree produced by ZCodeParser#function.
@@ -239,7 +238,7 @@ class ASTGeneration(ZCodeVisitor):
     # Visit a parse tree produced by ZCodeParser#literal.
     def visitLiteral(self, ctx:ZCodeParser.LiteralContext):
         if ctx.NUMBER_LIT():
-            return NumberLiteral(ctx.NUMBER_LIT().getText())
+            return NumberLiteral(float(ctx.NUMBER_LIT().getText()))
         elif ctx.STRING_LIT():
             return StringLiteral(ctx.STRING_LIT().getText())
         elif ctx.TRUE():
