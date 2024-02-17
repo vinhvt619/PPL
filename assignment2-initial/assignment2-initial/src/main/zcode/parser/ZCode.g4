@@ -36,7 +36,7 @@ expression4: expression4 (DIV | MUL | MOD) expression5 | expression5;
 expression5: NOT expression5 | expression6;
 expression6: MINUS expression6 | expression7;
 expression7: (IDENTIFIER | IDENTIFIER ('(' (list_expression)? ')')) '[' list_expression ']'| expression8;
-expression8: IDENTIFIER ('(' (list_expression)? ')') | '(' list_expression? ')' | literal;
+expression8: IDENTIFIER ('(' (list_expression)? ')') | '(' expression? ')' | literal;
 
 
 list_expression: expression CM list_expression | expression;
@@ -56,9 +56,9 @@ declaration_statement: variables ignore;
 assignment_statement: IDENTIFIER ('['list_expression']')? ARROW expression ignore;
 
 
-if_statement: 'if' expression ignore? statement elif_loop? else_statement? ; 
+if_statement: 'if' expression ignore? statement elif_loop else_statement? ; 
 elif_statement: 'elif' expression ignore? statement;
-elif_loop: elif_statement elif_loop | elif_statement;
+elif_loop: elif_statement elif_loop | ;
 else_statement: 'else' ignore? statement;
  
 

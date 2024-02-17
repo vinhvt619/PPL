@@ -152,7 +152,7 @@ class ASTGenSuite(unittest.TestCase):
         expect = str(Program([
                     VarDecl(Id("x"), None, None,  ArrayLiteral([NumberLiteral(1), StringLiteral("a"), BooleanLiteral(True), BooleanLiteral(False)]))
                 ]))
-        print("expect", expect)
+        # print("expect", expect)
         self.assertTrue(TestAST.test(input, expect, 313))   
         
         input = """
@@ -188,7 +188,7 @@ class ASTGenSuite(unittest.TestCase):
                     VarDecl(Id("x"), None, None,  Id("x")),
                     VarDecl(Id("x"), None, None,  ArrayCell(Id("a"), [NumberLiteral(1), NumberLiteral(2), NumberLiteral(3)]))
                 ]))
-        #print("expect", expect)
+        # print("expect", expect)
         self.assertTrue(TestAST.test(input, expect, 315))  
         
         input = """
@@ -387,7 +387,7 @@ class ASTGenSuite(unittest.TestCase):
                     FuncDecl(Id("main"), [], Block([
                     If(BooleanLiteral(True), Return(NumberLiteral(2)), [] ,Return(NumberLiteral(3)))]))
                 ]))
-        #print("expect", expect)
+        print("expect", expect)
         self.assertTrue(TestAST.test(input, expect, 328))
         
 

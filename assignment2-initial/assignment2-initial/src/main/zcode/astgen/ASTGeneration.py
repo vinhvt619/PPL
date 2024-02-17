@@ -26,6 +26,7 @@ class ASTGeneration(ZCodeVisitor):
 
 
     # Visit a parse tree produced by ZCodeParser#variables.
+    # implicit_var: VAR IDENTIFIER ARROW expression;
     def visitVariables(self, ctx:ZCodeParser.VariablesContext):
         if ctx.keyword_var() is None and ctx.implicit_dynamic() is None:
             return self.visit(ctx.implicit_var())
@@ -36,10 +37,7 @@ class ASTGeneration(ZCodeVisitor):
 
     # Visit a parse tree produced by ZCodeParser#implicit_var.
     def visitImplicit_var(self, ctx:ZCodeParser.Implicit_varContext):
-        if ctx.expression() is None:
-            return VarDecl(Id(ctx.IDENTIFIER().getText()), None, None, self.visit(ctx.array_literal()))
         return VarDecl(Id(ctx.IDENTIFIER().getText()), None, None, self.visit(ctx.expression()))
-
 
     # Visit a parse tree produced by ZCodeParser#keyword_var.
     #keyword_var: type1 IDENTIFIER ('['list_number']')?  (ARROW expression)?;
@@ -113,6 +111,7 @@ class ASTGeneration(ZCodeVisitor):
     def visitExpression(self, ctx:ZCodeParser.ExpressionContext):
         if ctx.getChildCount() == 1:
             return self.visit(ctx.expression1()[0])
+
         op = ctx.CONCAT().getText()
         left = self.visit(ctx.expression1()[0])
         right = self.visit(ctx.expression1()[1])
@@ -195,7 +194,7 @@ class ASTGeneration(ZCodeVisitor):
             return self.visit(ctx.expression6())
         op = ctx.NOT().getText()
         right = self.visit(ctx.expression5())
-        return BinaryOp(op, None, right)
+        return UnaryOp(op, right)
 
 
     # Visit a parse tree produced by ZCodeParser#expression6.
@@ -204,7 +203,7 @@ class ASTGeneration(ZCodeVisitor):
             return self.visit(ctx.expression7())
         op = ctx.MINUS().getText()
         right = self.visit(ctx.expression6())
-        return BinaryOp(op, None, right)
+        return UnaryOp(op, right)
 
 
     # Visit a parse tree produced by ZCodeParser#expression7.
@@ -221,19 +220,20 @@ class ASTGeneration(ZCodeVisitor):
     # Visit a parse tree produced by ZCodeParser#expression8.
     #expression8: IDENTIFIER ('(' (list_expression)? ')') | '(' list_expression? ')' | literal;
     def visitExpression8(self, ctx:ZCodeParser.Expression8Context):
-        if ctx.literal():
-            return self.visit(ctx.literal())
-        elif ctx.IDENTIFIER():
+        if ctx.IDENTIFIER():
             if ctx.list_expression():
                 return CallExpr(Id(ctx.IDENTIFIER().getText()), self.visit(ctx.list_expression()))
             return CallExpr(Id(ctx.IDENTIFIER().getText()),[])
-        return self.visit(ctx.list_expression())
+        elif ctx.expression():
+            return self.visit(ctx.expression())
+        else: 
+            return self.visit(ctx.literal())
 
     # Visit a parse tree produced by ZCodeParser#list_expression.
     def visitList_expression(self, ctx:ZCodeParser.List_expressionContext):
-        if ctx.getChildCount() == 1:
-            return self.visit(ctx.expression())
-        return self.visit(ctx.expression()), self.visit(ctx.list_expression())
+        if ctx.list_expression():
+            return [self.visit(ctx.expression())] + self.visit(ctx.list_expression())
+        return [self.visit(ctx.expression())]
 
 
     # Visit a parse tree produced by ZCodeParser#literal.
@@ -248,12 +248,14 @@ class ASTGeneration(ZCodeVisitor):
             return BooleanLiteral(False)
         elif ctx.array_literal():
             return self.visit(ctx.array_literal())
-        return Id(ctx.IDENTIFIER().getText())
+        else: return Id(ctx.IDENTIFIER().getText())
 
 
     # Visit a parse tree produced by ZCodeParser#array_literal.
     def visitArray_literal(self, ctx:ZCodeParser.Array_literalContext):
-        return [self.visit(ctx.list_expression())]
+        if ctx.list_expression():
+            return ArrayLiteral(self.visit(ctx.list_expression()))
+        return ArrayLiteral()
 
 
     # Visit a parse tree produced by ZCodeParser#statement.
@@ -293,13 +295,18 @@ class ASTGeneration(ZCodeVisitor):
     # Visit a parse tree produced by ZCodeParser#if_statement.
     #if_statement: 'if' expression ignore? statement elif_loop? else_statement? ; 
     def visitIf_statement(self, ctx:ZCodeParser.If_statementContext):
-        else_loop1 = None
-        if ctx.elif_loop():
-            else_loop1 = self.visit(ctx.elif_loop())
-        else_state = None
+        # else_loop1 = None
+        # if ctx.elif_loop():
+        #     else_loop1 = self.visit(ctx.elif_loop())
+        # else_state = None
+        # if ctx.else_statement():
+        #     else_state = self.visit(ctx.else_statement())
+        # return If(self.visit(ctx.expression()), self.visit(ctx.statement()), else_loop1, else_state)
+
+
         if ctx.else_statement():
-            else_state = self.visit(ctx.else_statement())
-        return If(self.visit(ctx.expression()), self.visit(ctx.statement()), else_loop1, else_state)
+            return If(self.visit(ctx.expression()), self.visit(ctx.statement()),self.visit(ctx.elif_loop()), self.visit(ctx.else_statement()))
+        return If(self.visit(ctx.expression()), self.visit(ctx.statement()),self.visit(ctx.elif_loop()), None)
 
 
     # Visit a parse tree produced by ZCodeParser#elif_statement.
@@ -313,7 +320,7 @@ class ASTGeneration(ZCodeVisitor):
     def visitElif_loop(self, ctx:ZCodeParser.Elif_loopContext):
         if ctx.elif_statement():
             return [self.visit(ctx.elif_statement())] + self.visit(ctx.elif_loop())
-        return self.visit(ctx.elif_statement())
+        return []
 
 
     # Visit a parse tree produced by ZCodeParser#else_statement.
@@ -324,7 +331,7 @@ class ASTGeneration(ZCodeVisitor):
     # Visit a parse tree produced by ZCodeParser#for_statement.
     #for_statement: 'for' IDENTIFIER 'until' expression 'by' expression ignore? statement;
     def visitFor_statement(self, ctx:ZCodeParser.For_statementContext):
-        return For(Id(ctx.IDENTIFIER().getText())),self.visit(ctx.expression()[0]), self.visit(ctx.expression()[1]), self.visit(ctx.statement())
+        return For(Id(ctx.IDENTIFIER().getText()),self.visit(ctx.expression()[0]), self.visit(ctx.expression()[1]), self.visit(ctx.statement()))
 
 
     # Visit a parse tree produced by ZCodeParser#break_statement.
