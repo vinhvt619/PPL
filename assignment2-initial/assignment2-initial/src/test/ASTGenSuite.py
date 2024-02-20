@@ -461,7 +461,7 @@ class ASTGenSuite(unittest.TestCase):
                If(BooleanLiteral(True), Return(NumberLiteral(1.0)), [], Return(NumberLiteral(1.0))), [], None)
             ]))]))
         #print(expect)
-        self.assertTrue(TestAST.test(input, expect, 330))     
+        self.assertTrue(TestAST.test(input, expect, 332))     
         
         input = """
             func main()
@@ -479,7 +479,7 @@ class ASTGenSuite(unittest.TestCase):
                [], Return(NumberLiteral(1.0)))
             ]))]))
         #print(expect)
-        self.assertTrue(TestAST.test(input, expect, 330))   
+        self.assertTrue(TestAST.test(input, expect, 333))   
         
         input = """
             func main()
@@ -496,7 +496,7 @@ class ASTGenSuite(unittest.TestCase):
                If(BooleanLiteral(True), Return(NumberLiteral(1.0)), [(BooleanLiteral(True),Return(NumberLiteral(1.0)))], Return(NumberLiteral(1.0))), [], None)
             ]))]))
         #print(expect)
-        self.assertTrue(TestAST.test(input, expect, 330))   
+        self.assertTrue(TestAST.test(input, expect, 334))   
         
         input = """
             func main()
@@ -513,7 +513,7 @@ class ASTGenSuite(unittest.TestCase):
                If(BooleanLiteral(True), Return(NumberLiteral(1.0)), [(BooleanLiteral(True),Return(NumberLiteral(1.0))), (BooleanLiteral(True),Return(NumberLiteral(1.0)))]), [], None)
             ]))]))
         #print(expect)
-        self.assertTrue(TestAST.test(input, expect, 330))   
+        self.assertTrue(TestAST.test(input, expect, 335))   
         
         input = """
             func main()
@@ -535,5 +535,5 @@ class ASTGenSuite(unittest.TestCase):
             , [(BooleanLiteral(True),Return(NumberLiteral(1.0))), (BooleanLiteral(True),Return(NumberLiteral(1.0)))], Return(NumberLiteral(1.0)))
             ]))]))
         #print(expect)
-        self.assertTrue(TestAST.test(input, expect, 330))   
+        self.assertTrue(TestAST.test(input, expect, 336))   
         
