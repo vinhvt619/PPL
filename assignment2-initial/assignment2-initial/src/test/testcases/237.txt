@@ -1,11 +1,7 @@
 
-        func main()
-            begin
-            for i until i >= 10 by 1 + 1
-                ## comment
-                
-                a <- 1
-            ## comment
+            func main() begin   
+                if(1+1) api <- 1
+                ##1
+                elif a continue
             end
-            
         

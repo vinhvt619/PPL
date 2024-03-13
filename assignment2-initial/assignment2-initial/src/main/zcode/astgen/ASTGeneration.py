@@ -251,10 +251,8 @@ class ASTGeneration(ZCodeVisitor):
 
 
     # Visit a parse tree produced by ZCodeParser#array_literal.
-    def visitArray_literal(self, ctx:ZCodeParser.Array_literalContext):
-        if ctx.list_expression():
-            return ArrayLiteral(self.visit(ctx.list_expression()))
-        return ArrayLiteral()
+    def visitArray_literal(self, ctx:ZCodeParser.Array_literalContext):\
+        return ArrayLiteral(self.visit(ctx.list_expression()))
 
 
     # Visit a parse tree produced by ZCodeParser#statement.
@@ -374,5 +372,3 @@ class ASTGeneration(ZCodeVisitor):
     # Visit a parse tree produced by ZCodeParser#ignore.
     def visitIgnore(self, ctx:ZCodeParser.IgnoreContext):
         return None
-
-    

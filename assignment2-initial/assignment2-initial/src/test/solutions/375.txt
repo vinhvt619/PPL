@@ -1,0 +1,1 @@
+Program([VarDecl(var,Id(a),BinaryOp(*,BinaryOp(*,Id(r),Id(r)),NumLit(3.14)))])

@@ -1,0 +1,1 @@
+Program([VarDecl(var,Id(x),UnaryOp(not,UnaryOp(not,UnaryOp(-,NumLit(1.0)))))])

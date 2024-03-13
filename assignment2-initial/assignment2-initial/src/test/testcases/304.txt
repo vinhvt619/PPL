@@ -1,4 +1,4 @@
 
-            string VoTien[5] <- 1
-            string VoTien[5]
+            string a[5] <- 1
+            string b[5]
         

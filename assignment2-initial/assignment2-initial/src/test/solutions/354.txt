@@ -1,0 +1,1 @@
+Program([FuncDecl(Id(main),[], Block([If(BinaryOp(+,NumLit(1.0),NumLit(1.0)),AssignStmt(Id(api),NumLit(1.0)))]))])

@@ -1,0 +1,6 @@
+
+            func main()
+                begin
+                    if (true) return 1
+                end
+        

@@ -1,0 +1,1 @@
+Program([VarDecl(StringType,Id(a),BinaryOp(...,StringLit(game),StringLit(so ez)))])

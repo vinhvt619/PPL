@@ -1,0 +1,4 @@
+
+            func a()
+                number a[1+1]
+        

@@ -1,6 +1,6 @@
- 
-            ## 12
-            
-            var a <- 1 ## 12
-            ## 12
-        
+
+        class Shape  
+            var length, width: int; 
+            func getArea(): int  
+                return self.length * self.width; 
+             

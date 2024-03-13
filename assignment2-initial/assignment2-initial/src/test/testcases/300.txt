@@ -1,1 +1,3 @@
-number a
+ 
+            string a <- 1 >=3
+        

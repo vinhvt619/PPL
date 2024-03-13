@@ -1,0 +1,8 @@
+
+            func main()
+                begin
+                    a <- 1
+                    a[1] <- 2
+                    a[3,2] <- 4 + 2
+                end
+        

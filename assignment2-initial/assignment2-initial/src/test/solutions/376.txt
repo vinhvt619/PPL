@@ -1,0 +1,1 @@
+Program([VarDecl(NumberType,Id(aPI),NumLit(3.14)),VarDecl(ArrayType([3.0],NumberType),Id(l),BinaryOp(*,Id(value),Id(aPI)))])

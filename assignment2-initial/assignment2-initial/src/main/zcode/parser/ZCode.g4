@@ -42,7 +42,7 @@ expression8: IDENTIFIER ('(' (list_expression)? ')') | '(' expression? ')' | lit
 list_expression: expression CM list_expression | expression;
 
 literal: NUMBER_LIT | STRING_LIT | TRUE | FALSE | array_literal | IDENTIFIER;
-array_literal: '[' (list_expression)? ']';
+array_literal: '[' (list_expression) ']';
 
 
 statement: declaration_statement | assignment_statement 

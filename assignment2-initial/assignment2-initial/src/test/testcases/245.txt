@@ -1,4 +1,4 @@
 
-        func main()
-            return func()
+            func main()
+                return true
         

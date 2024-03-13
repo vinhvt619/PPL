@@ -1,3 +1,5 @@
 
-            number x <- x number x <- y
+            func main()
+                number aPI <- 3.14
+                number l[3] <- value * aPi
         

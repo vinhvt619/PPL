@@ -1,3 +1,4 @@
 
-        func a() return 1 ## 12
+        func main()
+            number s <- r * r * 3.14
         

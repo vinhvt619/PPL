@@ -1,6 +1,11 @@
-    
-        func a()
-        begin
-            return 1 break
-        end
-        
+
+                func main()
+                begin
+                    begin
+                        begin
+                            begin
+                            end
+                        end
+                    end
+                end
+             
