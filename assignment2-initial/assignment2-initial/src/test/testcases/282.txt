@@ -1,11 +1,3 @@
-
-            func main()
-                begin
-                ##123zssxc
-                    var num1 <- readNumber()##213213
-                    var num2 <- readNumber()
-                    ##21312
-                    if areDivisors(num1, num2) printString("Yes")##22222
-                    else printString("No")
-                end
+    
+        func a(number a[1+1])
         

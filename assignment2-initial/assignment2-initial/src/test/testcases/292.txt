@@ -1,3 +1,6 @@
-
-            var a <- b()[a ...33] > 55 +  not not not  -3
+    
+        func a()
+            begin
+                c <- (1)[1]
+            end
         

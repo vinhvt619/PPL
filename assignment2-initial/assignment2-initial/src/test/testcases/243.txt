@@ -1,4 +1,6 @@
 
-            func main()
-            return
+        func main()
+            begin
+            main()
+            end
         

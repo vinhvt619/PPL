@@ -1,7 +1,4 @@
 
-            func main()
-                begin
-                    for i until i >= 10 by 1 + 1
-                        API <- 1
-                end
+        func main()
+            return 1 + 1
         

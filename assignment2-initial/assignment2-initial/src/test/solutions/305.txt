@@ -1,1 +1,1 @@
-Program([VarDecl(BoolType,Id(a),BooleanLit(False))])
+Error on line 4 col 16: func

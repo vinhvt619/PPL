@@ -1,5 +1,1 @@
-
-            func main(number num1, number num2)
-                ##number=1
-            func main(number f1)
-        
+func main(number a) 

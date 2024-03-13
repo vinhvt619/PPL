@@ -1,5 +1,2 @@
-
-            func main()
-            ## NBA
-            func main(string a) ## WWE
+var VoTien <- - not 1
         

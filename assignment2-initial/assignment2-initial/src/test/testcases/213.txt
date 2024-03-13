@@ -1,4 +1,14 @@
-
-        func main()
-            return
+ 
+            ##12
+            func main(number a) 
+                ##12
+                
+                begin 
+                    break
+                end
+                
+                ##12
+                ##12
+            func main(number a)
+            ##12        
         

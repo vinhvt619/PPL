@@ -1,6 +1,6 @@
-
-            func main() 
-                begin
-                    a = 3 a < "string"
-                end
+    
+        func a()
+            begin
+                1 <- 2
+            end
         

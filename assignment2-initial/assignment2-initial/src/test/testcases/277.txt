@@ -1,10 +1,8 @@
-
-            func main()
-                begin 
-                    return ([1,2,3]) + 1
-                    return main()
-                    main(1,2)
-                    fun()
-                    main([1,2,3], 1+2, a, c ... e)
-                end
-            
+    
+        func a()
+        begin
+            if (x <= 1) return false
+            if (x <= 1 )
+                return false 
+        end ## comment
+        

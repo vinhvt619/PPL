@@ -1,6 +1,3 @@
-
-            func main()
-            begin
-                (aPI[2])<- 3.14
-            end
+    
+            var a <- [1,2,3][1]
         

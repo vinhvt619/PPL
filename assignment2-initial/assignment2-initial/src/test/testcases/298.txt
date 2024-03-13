@@ -1,3 +1,6 @@
-
-            var a <- - not not not 3
-             
+    
+            func a()
+            begin
+                fun() fun()
+            end
+        

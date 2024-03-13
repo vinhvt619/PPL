@@ -1,4 +1,6 @@
-
-            string a[5] <- 1
-            string b[5]
+    
+            func a()
+            begin
+                if (1  return true
+            end
         

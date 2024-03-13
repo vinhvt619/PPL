@@ -1,16 +1,2 @@
 
-            func main()
-            ##11
-                begin 
-                    break
-                    ##22
-                    continue
-                    ##33
-                    for i until i >= 10 by 1 + 1
-                        begin
-                            break
-                            continue
-                        end
-                        ##99
-                end
         

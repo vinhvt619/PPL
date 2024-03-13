@@ -1,7 +1,2 @@
-
-            func main(number a)
-            ##ez
-                begin
-                end
-                ##abc
+var VoTien <- a[1]()
         

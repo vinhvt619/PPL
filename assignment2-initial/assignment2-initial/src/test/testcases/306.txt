@@ -1,3 +1,6 @@
-
-            dynamic a <- 1
+    
+            func a()
+            begin
+                if 1  return true
+            end
         

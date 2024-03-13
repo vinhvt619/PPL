@@ -1,3 +1,5 @@
-
-            var a <- b()[a ... 33]
+    
+        func a()
+            begin
+            end var c <- 1
         

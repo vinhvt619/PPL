@@ -1,6 +1,6 @@
-
-            func main()
+    
+        func a()
             begin
-                aPI[2]<- 3.14
+                a[1][2] <- 1
             end
         

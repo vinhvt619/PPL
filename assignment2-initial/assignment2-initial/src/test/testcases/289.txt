@@ -1,3 +1,5 @@
-
-            var a <- b()()
+    
+        func a()
+            begin a <- 1
+            end
         

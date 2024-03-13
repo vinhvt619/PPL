@@ -1,12 +1,3 @@
-
-            func main()
-                begin 
-                    break
-                    continue
-                    for i until i >= 10 by 1 + 1
-                        begin
-                            break
-                            continue
-                        end
-                end
+    
+            var a <- 1[1]
         

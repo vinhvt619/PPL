@@ -1,6 +1,4 @@
- 
-            func main() 
-            begin
-                foo()
-                end
-            
+    
+            var c <- a()
+            [1]
+        

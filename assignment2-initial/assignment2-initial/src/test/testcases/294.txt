@@ -1,3 +1,6 @@
-
-            func main( number a <- 3 )
+    
+        func a()
+            begin
+                VoTien[] <- 1
+            end
         

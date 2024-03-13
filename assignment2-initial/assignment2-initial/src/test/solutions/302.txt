@@ -1,1 +1,1 @@
-Program([VarDecl(StringType,Id(x),NumLit(1.0))])
+successful
