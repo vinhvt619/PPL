@@ -1,1 +1,1 @@
-successful
+Program([VarDecl(dynamic,Id(a),NumLit(1.0))])

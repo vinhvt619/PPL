@@ -1,6 +1,3 @@
-    
-            func a()
-            begin
-                if ( 1 return true
-            end
+
+            bool a <- 1
         
