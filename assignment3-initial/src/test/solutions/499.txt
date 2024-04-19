@@ -1,0 +1,1 @@
+Type Mismatch In Statement: VarDecl(Id(num1), NumberType, None, None)

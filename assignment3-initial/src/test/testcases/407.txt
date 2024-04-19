@@ -1,5 +1,8 @@
 
-            func foo(number a) return   
-        
-            func main() return
+            func main() begin 
+                number a
+                dynamic b
+                dynamic c
+                b <- c
+            end
         

@@ -1,6 +1,5 @@
 
-            func foo(number a)
-            func foo(number a) return     
-        
-            func main() return
+            func main() begin 
+                return 1
+            end
         
