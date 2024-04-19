@@ -537,18 +537,19 @@ class StaticChecker(BaseVisitor, Utils):
                     if i != typeParam[i]:
                         raise Redeclared(Function(), ast.name.name)
                 #cập nhật self.listFunction[].body, self.Return, self.function và self.visit(ast.body, [listParam] + param) 
-                self.listFunction[ast.name.name] = ast.body
+                
+                self.listFunction[ast.name.name] = self.visit(ast.body, param)
                 self.function = self.listFunction[ast.name.name]
                 self.Return = False
-                if self.function is not None:
-                    self.function = VoidType()
+                if self.function.typ is None:
+                    self.function.typ = VoidType()
             else: raise Redeclared(Function(), ast.name.name)
         else: 
-            self.listFunction[ast.name.name] = ast.body
+            self.listFunction[ast.name.name].body = self.visit(ast.body)
             self.function = self.listFunction[ast.name.name]
             self.Return = False
-            if self.function is not None:
-                self.function = VoidType()
+            if self.function.typ is not None:
+                self.function.typ = VoidType()
             #todo: implement TH3
         #! hàm này không có return
         # if not self.Return:
