@@ -1,7 +1,8 @@
 
             func a()
-            func main() begin
-                a()
+            func main() 
+            begin
+            
             end
             func a() return
         

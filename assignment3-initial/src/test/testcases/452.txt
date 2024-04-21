@@ -1,5 +1,6 @@
 
-            func main()begin
+            func main()
+            begin
                 dynamic a
                 if (a) return
                 a <- true

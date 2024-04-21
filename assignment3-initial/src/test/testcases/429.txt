@@ -4,6 +4,5 @@
             end
             func main() begin
                 a()
-                b()
             end
         

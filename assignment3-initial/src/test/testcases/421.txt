@@ -1,6 +1,6 @@
 
             number a
-            func VoTien(number a, number VoTien, number c, string c)
+            func foo(number a, bool b, number c, string c)
             begin
             end
             

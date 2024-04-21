@@ -1,7 +1,8 @@
 
             func foo(number a) return
 
-            func main()begin
+            func main()
+            begin
                 foo()
             end
         

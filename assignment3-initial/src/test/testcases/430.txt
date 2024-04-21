@@ -1,6 +1,7 @@
 
             func a() return
-            func main() begin
+            func main() 
+            begin
                 number a
                 a()
             end
