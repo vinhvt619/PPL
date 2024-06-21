@@ -1,0 +1,7 @@
+
+            func main()
+            begin
+                dynamic a <- 1
+                if (a) return
+            end
+        

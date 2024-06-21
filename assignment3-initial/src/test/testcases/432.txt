@@ -10,13 +10,6 @@
                         continue
                     end
                     
-                    for i until true by 1
-                    begin
-                        break
-                        continue
-                    end
-                    break
-                    continue
                 end
             end
         

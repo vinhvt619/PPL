@@ -1,0 +1,6 @@
+
+            dynamic foo
+            number a <- foo
+
+            func main() return
+        

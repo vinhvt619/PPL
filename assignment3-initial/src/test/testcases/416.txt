@@ -1,0 +1,10 @@
+
+            number a
+            func main()begin
+                number a
+                number c
+                begin
+                    number c
+                end
+            end
+        
